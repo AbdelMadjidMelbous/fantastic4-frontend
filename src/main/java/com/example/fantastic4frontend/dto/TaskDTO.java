@@ -1,7 +1,13 @@
 package com.example.fantastic4frontend.dto;
 
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class TaskDTO {
     private Long id;
+    @NotNull(message = "NotNull.taskDTO.description")
+    @Size(min = 1, max = 64, message = "Size.taskDTO.description")
     private String description;
     private boolean completed;
 
@@ -28,6 +34,7 @@ public class TaskDTO {
     public boolean isCompleted() {
         return completed;
     }
+
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
