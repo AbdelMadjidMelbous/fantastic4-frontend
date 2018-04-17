@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="css/test.css" rel="stylesheet" />
+    <title>Niveaux application</title>
 </head>
 <body>
-
+<div class="container">
+    <h1>My levels</h1>
+    <div class="row" th:each="niveau : ${niveaux}">
+        <div class="nine columns">
+                <span th:text="${niveau.libelle}"></span>
+        </div>
+        <div class="three columns">
+            <form th:method="delete" th:action="@{/niveaux}">
+                <input type="hidden" name="id" th:value="${niveau.id}" />
+                <button class="button u-full-width" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+    <hr />
+    <form method="post" th:action="@{/niveaux}" th:object="${newNiveau}">
+        <div class="row">
+            <div class="six columns">
+                <input type="text" placeholder="Libelle" class="u-full-width" th:field="*{libelle}" />
+            </div>
+            <div class="three columns">
+                <input type="number" placeholder="Poids" class="u-full-width" th:field="*{poids}" />
+            </div>
+            <div class="three columns">
+                <button type="submit" class="button-primary u-full-width">Add</button>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>

@@ -2,3 +2,6 @@ server:
   port: 8081
 resource:
   tasks: http://localhost:8080/api/tasks
+  niveaux: http://localhost:8080/api/niveaux
+  questions: http://localhost:8080/api/questions
+  modules: http://localhost:8080/api/modules
